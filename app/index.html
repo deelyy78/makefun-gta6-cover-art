@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Panels — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="shell">
+  <aside class="controls" id="controls">
+    <h1 class="brand">VICE <span>PANELS</span></h1>
+    <p class="tagline">Your photo, a caption, and out comes cover art in the
+      multi-panel poster style — sunset grade, bold lettering, PNG to share.</p>
+
+    <fieldset class="group">
+      <legend>1 · Photos</legend>
+      <label class="slot">Panel photo A <input id="photoA" type="file" accept="image/*"></label>
+      <label class="slot">Panel photo B <input id="photoB" type="file" accept="image/*"></label>
+      <label class="slot">Panel photo C <input id="photoC" type="file" accept="image/*"></label>
+      <div class="row">
+        <button id="samplePier" type="button">Try the pier photo</button>
+        <button id="sampleBoulevard" type="button">Try the boulevard photo</button>
+      </div>
+      <p class="hint">Photos are read on your own machine and never uploaded.
+        Click a panel on the cover, then drag it or use the sliders to frame it.</p>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>2 · Layout &amp; grade</legend>
+      <label>Panels
+        <select id="layoutPick">
+          <option value="quad">Quad — hero left, two stacked right</option>
+          <option value="trio">Trio — three vertical strips</option>
+          <option value="duo">Duo — wide top, two below</option>
+          <option value="hero">Hero — one full-bleed panel</option>
+        </select>
+      </label>
+      <label>Colour grade
+        <select id="gradePick">
+          <option value="vice">Vice Sunset</option>
+          <option value="neon">Neon Nights</option>
+          <option value="golden">Golden Hour</option>
+          <option value="chrome">Midnight Chrome</option>
+          <option value="grit">Newsprint Grit</option>
+        </select>
+      </label>
+      <label>Drawn decor
+        <select id="decorPick">
+          <option value="palms">Sun disc &amp; palm silhouettes</option>
+          <option value="skyline">Skyline silhouette</option>
+          <option value="clean">Clean — no decor</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>3 · Lettering</legend>
+      <label>Title <input id="titleText" type="text" maxlength="26" value="SUNSET HEIST"></label>
+      <label>Caption <input id="captionText" type="text" maxlength="44" value="ONE LAST SCORE IN VICE TERRITORY"></label>
+      <label>Lettering sits
+        <select id="letterPick">
+          <option value="bottom">Bottom of the cover</option>
+          <option value="top">Top of the cover</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>4 · Frame the selected panel</legend>
+      <p class="hint" id="panelName">Panel 1</p>
+      <label>Zoom <input id="zoomRange" type="range" min="1" max="3" step="0.01" value="1"></label>
+      <label>Pan across <input id="panXRange" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+      <label>Pan up / down <input id="panYRange" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>5 · Export</legend>
+      <label>Post size
+        <select id="sizePick">
+          <option value="square">Square — 1080 × 1080</option>
+          <option value="portrait">Portrait — 1080 × 1350</option>
+          <option value="wide">Wide — 1920 × 1080</option>
+        </select>
+      </label>
+      <button id="exportPng" class="export" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </aside>
+
+  <section class="stage" id="stage">
+    <canvas id="coverCanvas" width="1080" height="1080" aria-label="Your cover art preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
